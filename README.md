@@ -7,7 +7,7 @@
 ## How to
 ### Identify new buttons
 * python new_dash_identify.py
-Press the button and its mac address will show up
+  * Press the button and its mac address will show up
 
 
 ### Trigger actions 
