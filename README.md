@@ -3,6 +3,7 @@
 ## Requirements
 * sudo apt-get install tcpdump
 * pip install --user scapy
+* Set up the buttons with Amazon app but stop at the product configuration page
 
 ## How to
 ### Identify new buttons
