@@ -16,7 +16,7 @@ case "$1" in
     start)
         echo "Starting actions_dash"
         echo "  python /home/pi/domoticz/scripts/python/AmazonDash/actions_dash.py &"
-        python /home/pi/domoticz/scripts/python/actions_dash.py &
+        python /home/pi/domoticz/scripts/python/AmazonDash/actions_dash.py &
         ;;
     stop)
         echo "Stopping actions_dash"
