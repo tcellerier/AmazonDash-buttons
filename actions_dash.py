@@ -38,10 +38,10 @@ def button_detect(pkt):
         
         # actions des boutons
         if mac == buttons['but1']:
-            print "\n" + time.strftime('%X ') + "Bouton 1déclenché"
+            print "\n" + now.strftime('%X ') + "Bouton 1déclenché"
            
         elif mac == buttons['but2']:
-            print "\n" + time.strftime('%X ') + "Bouton 2 déclenché"
+            print "\n" + now.strftime('%X ') + "Bouton 2 déclenché"
 
     else:
         print "delay too short between 2 packets: " + str(delay_lastpush) + " sec. (min " + str(min_delay) + "s)" 
