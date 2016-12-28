@@ -13,7 +13,7 @@ import os
 
 ############# PARAMETRES #############
 
-buttons = { 'but1': 'ab:64:bd:25:57:51', 'But2': '45:63:01:b2:59:Bf'}
+buttons = { 'but1': 'ab:64:bd:25:57:51', 'but2': '45:63:01:b2:59:Bf'}
 
 #######################################
 
@@ -38,7 +38,7 @@ def button_detect(pkt):
         
         # actions des boutons
         if mac == buttons['but1']:
-            print "\n" + now.strftime('%X ') + "Bouton 1déclenché"
+            print "\n" + now.strftime('%X ') + "Bouton 1 déclenché"
            
         elif mac == buttons['but2']:
             print "\n" + now.strftime('%X ') + "Bouton 2 déclenché"
