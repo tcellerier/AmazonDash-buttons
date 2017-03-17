@@ -20,7 +20,9 @@ buttons = { 'but1': 'ab:64:bd:25:57:51', 'but2': '45:63:01:b2:59:Bf'}
 
 
 def button_detect(pkt):
-   
+ 
+    global lasttime
+
     if not pkt.haslayer(Ether):
         return
 
