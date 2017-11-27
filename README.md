@@ -7,20 +7,20 @@
 
 ## How to
 ### Identify new buttons
-* sudo python new_dash_identify.py
+* sudo python amazondash_identify_new.py
   * Press the button and its mac address will show up
 
 
 ### Trigger actions 
-* modify the file actions_dash.py with the button mac adresses and the actions to trigger
-* sudo python actions_dash.py
+* modify the file amazondash.py with the button mac adresses and the actions you want to trigger
+* sudo python amazondash.py
 
 
-### Automaticaly launch actions_dash.py at startup
-* Modify the file actions_dash
-* sudo cp actions_dash /etc/init.d/
-* sudo chmod 755 /etc/init.d/actions_dash
-* sudo update-rc.d actions_dash defaults (sudo update-rc.d actions_dash remove => remove auto start)
+### Automaticaly launch amazondash.py at startup
+* Modify the file amazondash
+* sudo cp amazondash /etc/init.d/
+* sudo chmod 755 /etc/init.d/amazondash
+* sudo update-rc.d amazondash defaults (sudo update-rc.d amazondash remove => remove auto start)
 
-* To start the service immediately : sudo service actions_dash start 
+* To start the service immediately : sudo service amazondash start 
  
