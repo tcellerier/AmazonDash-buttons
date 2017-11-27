@@ -1,0 +1,45 @@
+#!/bin/bash
+# /etc/init.d/amazondash
+
+### BEGIN INIT INFO
+# Provides:          amazondash
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: amazondash
+# Description:       Python script pour exécuter des commandes à l'appui sur les boutons AmazonDash
+### END INIT INFO
+
+NAME=amazondash
+PIDFILE=/var/run/$NAME.pid
+
+case "$1" in 
+    start)
+        echo "Starting amazondash.py"
+        echo "  python /home/pi/domoticz/scripts/python/amazondash/amazondash.py &"
+        python /home/pi/domoticz/scripts/python/amazondash/amazondash.py &
+        # Get its PID and store it
+        echo $! > $PIDFILE 
+        ;;
+
+    stop)
+        echo "Stopping amazondash.py"
+        echo '  pkill -f "python /home/pi/domoticz/scripts/python/amazondash/amazondash.py"'
+        pkill -f "python /home/pi/domoticz/scripts/python/amazondash/amazondash.py"
+        rm -rf $PIDFILE 
+        ;;
+
+    reload|restart)
+        $0 stop
+        sleep 2
+        $0 start
+        ;;
+
+    *)
+        echo "Usage: $0 {start|stop|reload|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
