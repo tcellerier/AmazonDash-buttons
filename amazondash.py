@@ -23,12 +23,22 @@ def button_detect(pkt):
  
     global lasttime
 
-    if not pkt.haslayer(Ether):
+    # Show all the packet
+    # print(pkt.show()) 
+
+    # Lecture de l'adresse mac dans le paquet
+    mac = ""
+    if pkt.haslayer(Ether):
+        mac = pkt[Ether].src
+    elif  pkt.haslayer(Dot11): # Layer 802.11
+        mac = pkt[Dot11].addr2
+
+    if mac == "":
         return
 
-    min_delay = 3    # delai minimum en secondes pour la prise en compte d'un nouveau paquet
+    min_delay = 8    # delai minimum en secondes pour la prise en compte d'un nouveau paquet. min 3, 10 si en le bouton est connectée sur le réseau. 8 sinon
     now = datetime.now()
-    mac = pkt[Ether].src
+    
     if not (mac in lasttime):   # 1ere fois que le boutton est pressé
         delay_lastpush = 999
     else:
@@ -56,7 +66,10 @@ def startSniff():
     lasttime = {}
 
     sniff_filters = " or ".join(["ether src host " + buttons[button] for button in buttons]) # filtre uniquement sur les adresses mac des boutons
-    print(sniff(prn=button_detect, filter=sniff_filters, store=0))
+    print("AmazonDash Sniffing started ...")
+    
+    # Mode monitor sur mon0 activé
+    print(sniff(iface='mon0', prn=button_detect, filter=sniff_filters, store=0))
 
 
 
