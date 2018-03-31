@@ -60,20 +60,19 @@ def button_detect(pkt):
 
 
 
-def startSniff():
 
-    global lasttime
-    lasttime = {}
+def initSniff():
+    global lasttime, sniff_filters
+    lasttime = {} # On initialise la variable lasttime 
+    sniff_filters = " or ".join(["ether src host " + buttons[button] for button in buttons])  # filtre uniquement sur les adresses mac des boutons
 
-    sniff_filters = " or ".join(["ether src host " + buttons[button] for button in buttons]) # filtre uniquement sur les adresses mac des boutons
-    print("AmazonDash Sniffing started ...")
-    
-    # Mode monitor sur mon0 activé
-    print(sniff(iface='mon0', prn=button_detect, filter=sniff_filters, store=0))
+
+def startSniff(iface = "eth0"):
+    print("Sniffing started on %s ..." % iface)
+    print(sniff(iface=iface, prn=button_detect, filter=sniff_filters, store=0))
 
 
 
 if __name__ == '__main__':
-    startSniff()
-
-
+    initSniff()
+    startSniff('mon0')
